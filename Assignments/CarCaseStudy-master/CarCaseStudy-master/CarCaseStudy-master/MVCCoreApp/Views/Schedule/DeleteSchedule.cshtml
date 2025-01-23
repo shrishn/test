@@ -1,0 +1,46 @@
+﻿@model MVCCoreApp.Models.Schedules
+@{
+    ViewData["Title"] = "Delete Schedule";
+    Layout = "~/Views/Shared/JourneyLayout.cshtml";
+}
+
+<h1>Delete Schedule</h1>
+
+<p>Are you sure you want to delete the following schedule?</p>
+
+<table class="table">
+    <tr>
+        <th>Journey Date</th>
+        <td>@Model.JourneyDate.ToString("dd-MM-yyyy")</td>
+    </tr>
+    <tr>
+        <th>Car</th>
+        <td>@Model.CarId</td>
+    </tr>
+    <tr>
+        <th>Driver</th>
+        <td>@Model.DriverId</td>
+    </tr>
+    <tr>
+        <th>Start Location</th>
+        <td>@Model.StartLocation</td>
+    </tr>
+    <tr>
+        <th>Destination</th>
+        <td>@Model.Destination</td>
+    </tr>
+    <tr>
+        <th>Total KM Driven</th>
+        <td>@Model.TotalKmDriven</td>
+    </tr>
+    <tr>
+        <th>Rate per KM</th>
+        <td>@Model.RatePerKm</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteSchedule" method="post">
+    <input type="hidden" asp-for="ScheduleId" />
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

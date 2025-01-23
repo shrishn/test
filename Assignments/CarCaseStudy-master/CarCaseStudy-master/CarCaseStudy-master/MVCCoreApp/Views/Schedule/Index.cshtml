@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVCCoreApp.Models.Schedules>
+
+@{
+    ViewData["Title"] = "Schedule List";
+
+    Layout = "~/Views/Shared/JourneyLayout.cshtml";
+}
+
+<h1>Schedule List</h1>
+<a asp-action="AddSchedule" class="btn btn-success">Add New Schedule</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Journey Date</th>
+            <th>Car ID</th>
+            <th>Driver ID</th>
+            <th>Start Location</th>
+            <th>Destination</th>
+            <th>Total KM Driven</th>
+            <th>Rate Per KM</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var schedule in Model)
+
+        {
+            <tr>
+                <td>@schedule.JourneyDate.ToString("dd-MM-yyyy")</td>
+                <td>@schedule.CarId</td>
+                <td>@schedule.DriverId</td>
+                <td>@schedule.StartLocation</td>
+                <td>@schedule.Destination</td>
+                <td>@schedule.TotalKmDriven</td>
+                <td>@schedule.RatePerKm</td>
+                <td>
+                    <a asp-action="EditSchedule" asp-route-id="@schedule.ScheduleId" class="btn btn-primary">Edit</a>
+                    <a asp-action="DeleteSchedule" asp-route-id="@schedule.ScheduleId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,65 @@
+﻿@model TransactionMVC.Models.Transaction
+
+@{
+    ViewData["Title"] = "ProcessTransaction";
+}
+
+<h1>ProcessTransaction</h1>
+
+<h4>Transaction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ProcessTransaction" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TransId" class="control-label"></label>
+                <input type="hidden" asp-for="TransId" class="form-control" />
+                <span asp-validation-for="TransId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransDate" class="control-label"></label>
+                @DateTime.Today
+                <span asp-validation-for="TransDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrencyInHand" class="control-label"></label>
+                <input asp-for="CurrencyInHand" class="form-control" />
+                <span asp-validation-for="CurrencyInHand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrencyRequest" class="control-label"></label>
+                <input asp-for="CurrencyRequest" class="form-control" />
+                <span asp-validation-for="CurrencyRequest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountInHand" class="control-label"></label>
+                <input asp-for="AmountInHand" class="form-control" />
+                <span asp-validation-for="AmountInHand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcessedAmount" class="control-label"></label>
+                <input type="hidden" asp-for="ProcessedAmount" class="form-control" />
+                <span asp-validation-for="ProcessedAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
