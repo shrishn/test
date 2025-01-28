@@ -10,15 +10,15 @@ def filter_customers(loan_type):
         found = False
         
         # Step 3: Loop through customers and their loans to filter by loan_type
-        print("Loan Details")
-        print("Account_Number     Customer_Name   Loan_Amount")
-        
         for customer in data['customers']:
             for loan in customer['loans']:
                 if loan['loan_type'].lower() == loan_type.lower():
                     # Step 4: If loan type matches, print the details
+                    if not found:
+                        print("Loan Details")
+                        print("Account_Number     Customer_Name   Loan_Amount")
+                        found = True
                     print(f"{customer['Account_Number']}       {customer['customer_name']}           {loan['loan_amount']}")
-                    found = True
         
         # Step 5: If no matching customers found, display a message
         if not found:
